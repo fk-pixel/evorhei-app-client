@@ -8,7 +8,7 @@ import styled from "styled-components";
 import { DataTableForm } from "./DataTableForm";
 import { Portal } from "react-portal";
 import { useAppContext } from "../../../context/AppContext";
-import {/* BrowserView, isMobile, */ MobileView} from 'react-device-detect';
+//import { /* BrowserView, isMobile, */ MobileView } from "react-device-detect";
 
 const initialList = {
   menge: 0,
@@ -82,7 +82,7 @@ export default function DataTable() {
     closeListEditDialog();
   };
   const deleteMaterialHandler = () => {
-    ctxProps.deleteUserListHandler(materialId)
+    ctxProps.deleteUserListHandler(materialId);
     closeDeleteDialog();
   };
 
@@ -94,64 +94,93 @@ export default function DataTable() {
     }
   };
 
-  
   const columns = [
     {
       dataField: "_id",
       text: "ID",
       sort: true,
-      headerStyle: { 
-        lineHeight: "3rem"
+      headerStyle: {
+        lineHeight: "3rem",
+        fontSize:"0.9rem"
       },
       style: {
         minWidth: "120px",
+        fontSize: "0.8rem",
+        padding: 0,
+        left: 0,
+        margin: 0,
+        lineHeight: "2",
       },
-      
     },
     {
       dataField: "material",
       text: "Materials",
       sort: true,
-      headerStyle: { 
-        lineHeight: "3rem"
+      headerStyle: {
+        lineHeight: "3rem",
+        fontSize:"0.9rem"
       },
       style: {
         minWidth: "120px",
+        fontSize: "0.8rem",
+        padding: 0,
+        left: 0,
+        margin: 0,
+        lineHeight: "2",
       },
     },
     {
       dataField: "chargenNumber",
       text: "Ch.Nr",
       sort: true,
-      headerStyle: { 
-        lineHeight: "3rem"
+      headerStyle: {
+        lineHeight: "3rem",
+        fontSize:"0.9rem"
       },
       style: {
         minWidth: "120px",
         color: "var(--primary-color)",
+        fontSize: "0.8rem",
+        padding: 0,
+        left: 0,
+        margin: 0,
+        lineHeight: "2",
       },
     },
     {
       dataField: "menge",
       text: "Menge",
       sort: true,
-      headerStyle: { 
-        lineHeight: "3rem"
+      headerStyle: {
+        lineHeight: "3rem",
+        fontSize:"0.9rem"
       },
       style: {
         minWidth: "120px",
+        fontSize: "0.8rem",
+        padding: 0,
+        left: 0,
+        margin: 0,
+        lineHeight: "2",
       },
     },
     {
       dataField: "createdAt",
       text: "Date",
       sort: true,
-      headerStyle: { 
-        width:"15vw",
-        lineHeight: "3rem"
+      headerStyle: {
+        width: "15vw",
+        lineHeight: "3rem",
+        fontSize:"0.9rem"
       },
       style: {
         minWidth: "120px",
+        fontSize: "0.8rem",
+        padding: 0,
+        left: 0,
+        margin: 0,
+        lineHeight: "2",
+        justifyContent:"center"
       },
       formatter: (cell) => {
         return `${moment(cell).format("LL HH:mm")}`;
@@ -160,11 +189,13 @@ export default function DataTable() {
     {
       dataField: "action",
       text: "Action",
-      headerStyle: { 
+      headerStyle: {
         lineHeight: "3rem",
+        fontSize:"0.9rem"
       },
       style: {
-        minWidth: "120px",lineHeight: "150%"
+        minWidth: "120px",
+        lineHeight: "2",
       },
       formatter: (cellContent, row) => {
         return (
@@ -199,10 +230,7 @@ export default function DataTable() {
               <Button variant="secondary" onClick={closeDeleteDialog}>
                 Schliessen
               </Button>
-              <Button
-                variant="danger"
-                onClick={deleteMaterialHandler}
-              >
+              <Button variant="danger" onClick={deleteMaterialHandler}>
                 Löschen
               </Button>
             </Modal.Footer>
@@ -235,34 +263,34 @@ export default function DataTable() {
       </>
     );
   };
-  const stylesMobile = {
-    fontSize: '0.8rem',
+  /* const stylesMobile = {
+    fontSize: "0.8rem",
     padding: 0,
-    left:0,
-    margin:0,
-    lineHeight: '2',
-  };
+    left: 0,
+    margin: 0,
+    lineHeight: "2",
+  }; */
 
   //console.log(ctxProps);
-  return (    
-    <Container style={{ marginTop: "2rem", padding: "20px"  }}>
+  return (
+    <Container style={{ marginTop: "2rem", padding: "20px" }}>
       <ModalContent />
       {ctxProps.isLoading && <h4>Loading...</h4>}
       <h1>Item List</h1>
-      
-      <MobileView style={stylesMobile}>
+
+     {/*  <MobileView style={stylesMobile}> */}
         <BootstrapTable
-         wrapperClasses="table-responsive"
-         bootstrap4
-         striped
-         keyField="_id"
-         data={ctxProps.userList ?? []}
-         columns={columns}
-         pagination={paginationFactory({ sizePerPage: 5 })}
-         bordered={false}
-         noDataIndication={indication}
+          wrapperClasses="table-responsive"
+          bootstrap4
+          striped
+          keyField="_id"
+          data={ctxProps.userList ?? []}
+          columns={columns}
+          pagination={paginationFactory({ sizePerPage: 5 })}
+          bordered={false}
+          noDataIndication={indication}
         />
-      </MobileView> 
+      {/* </MobileView> */}
     </Container>
   );
 }
@@ -280,5 +308,3 @@ const Icon = styled.div`
     color: var(--btn-color-danger);
   }
 `;
-
-
